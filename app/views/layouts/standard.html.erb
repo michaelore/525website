@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Cedar Falls High School Robotics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="title" content="Cedar Falls High School Robotics" />
+    <%= stylesheet_link_tag 'scaffold' %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body>
+	  <div id="banner"><img alt="Swartdogs" src="http://fc.cedar-falls.k12.ia.us/~CFHS_robotics/sitepics/Swart_Dogs_clock.jpg" align="top" /></div>
+	  <div id="nav">
+		  <ul>
+			  <li><a title="CFHS Robotics Home" href="http://fc.cedar-falls.k12.ia.us/~robotics/">Home</a></li>
+			  <li><a title="CFHS Robotics Calendar" href="http://fc.cedar-falls.k12.ia.us/~robotics/calendar">Calendar</a></li>
+			  <li><a title="CFHS Robotics Media Page" href="http://fc.cedar-falls.k12.ia.us/~robotics/pictures">Photos</a></li>
+			  <li><a title="CFHS Robotics Committees" href="http://fc.cedar-falls.k12.ia.us/~robotics/committee">Committees</a></li>
+			  <li><a title="CFHS Robotics Sponsors" href="http://fc.cedar-falls.k12.ia.us/~robotics/Sponsors">Sponsors</a></li>
+			  <li><a title="US First" href="http://fc.cedar-falls.k12.ia.us/~robotics/First.html">US First</a></li>
+			  <li><a title="CFHS Robotics Links" href="http://fc.cedar-falls.k12.ia.us/~robotics/Links.html">Links</a></li>
+			  <li><a title="CFHS Robotics Contacts" href="http://fc.cedar-falls.k12.ia.us/~robotics/Contacts">Contact Us</a></li>
+			  <li>
+			  <% if session[:logged_in] then %>
+				  <%= link_to 'Logout', :controller => "user", :action => "logout" %>
+			  <% else %>
+				  <%= link_to 'Login', :controller => "user", :action => "login" %>
+			  <% end %>
+			  </li>
+		  </ul>
+	  </div>
+	  <%= yield%>
+	  <div id="footer">
+		    <a title="CFHS" href="http://www.cedar-falls.k12.ia.us/Buildings/CFHS/cfhigh.html"><img src="http://fc.cedar-falls.k12.ia.us/~CFHS_robotics/sitepics/cfhs.jpg" alt="CFHS" /></a>
+		    <a title="US First" href="http://www.usfirst.org/" target="_blank"><img title="About FIRST" height="96" alt="FIRST" hspace="0" src="http://fc.cedar-falls.k12.ia.us/~CFHS_Robotics/sitepics/fr_logo.gif" width="99" align="bottom" border="0" /></a>
+	    </div>
+    </body>
+</html>

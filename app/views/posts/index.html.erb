@@ -1,0 +1,26 @@
+<div id="postcontainer">
+	<% for post in @posts %>
+		<div id="post">
+			<div id="ptitle">
+				<h1><%=h post.title %></h1>
+			</div>
+			<div id="pdate">
+				<p>Created at <%= post[:created_at] %></p>
+			</div>
+			<%= post.content %>
+			<div id="pfooter">
+				<% if session[:logged_in] then %>
+					<%= link_to 'Edit', edit_post_path(post) %>
+					<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
+				<% end %>
+				<%= link_to 'Comments', post %>
+			</div>
+		</div>
+	<% end %>
+	<br />
+	<div id="admin">
+		<% if session[:logged_in] then %>
+			<%= link_to 'New Post', :action => "new" %><br /><br />
+		<% end %>
+	</div>
+</div>

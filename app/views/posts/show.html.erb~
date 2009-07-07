@@ -1,0 +1,47 @@
+<table>
+
+  <tr>
+    <th><%=h @post.title %></th>
+  </tr>
+  <tr>
+    <td align="left">
+	<pre>
+        <%= @post.content %>
+	</pre>
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<% if session[:logged_in] %>
+	<%= link_to 'Edit', edit_post_path(@post) %>
+    	<%= link_to 'Delete', @post, :confirm => 'Are you sure?', :method => :delete %>
+	<% end %>
+    </td>
+  </tr>
+</table>
+<div id="comments"><ol>
+  <% @comments.each do |comment| %>
+    <li>	
+    	<table>
+          <tr>
+            <td>
+	      <%=h comment.author %>
+	      <% if session[:logged_in]
+	      <%= link_to 'Edit', :controller => 'comments', :action => 'edit', :id => comment.id %>
+	      <%= link_to 'Delete', :confirm => 'Are you sure?', :controller => 'comments', :action => 'destroy', :id => comment.id %>
+	      <% end %>
+	    </td>
+          </tr>
+          <tr>
+            <td>
+              <pre>
+                <%= comment.content -%>
+              </pre>
+            </td>
+          </tr>
+        </table>
+    </li>
+  <% end %>
+</ol></div>
+<%= link_to 'New Comment', :controller => 'comments', :action => 'new', :post => @post %><br />
+<%= link_to 'Go back', :action => 'index' %></td></tr>

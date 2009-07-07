@@ -1,0 +1,38 @@
+<div id="postcontainer">
+	<div id="post">
+		<div id="ptitle">
+			<h1><%=h @post.title %></h1>
+		</div>
+		<div id="pdate">
+			<p>Created at <%= @post[:created_at] %></p>
+		</div>
+		<%= @post.content %>
+		<div id="pfooter">
+			<% if session[:logged_in] then %>
+				<%= link_to 'Edit', edit_post_path(@post) %>
+				<%= link_to 'Delete', @post, :confirm => 'Are you sure?', :method => :delete %>
+			<% end %>
+			<%= link_to 'Comments', @post %>
+		</div>
+	</div>
+	<div id="comments">
+		<ol>
+			<% @comments.each do |comment| %>
+				<li>
+				<div id="cheader">
+					<span id="cauthor">
+						<%=h comment.author %>
+					</span>
+					<% if session[:logged_in] %>
+						<%= link_to 'Edit', :controller => 'comments', :action => 'edit', :id => comment.id %>
+						<%= link_to 'Delete', :confirm => 'Are you sure?', :controller => 'comments', :action => 'destroy', :id => comment.id %>
+					<% end %>
+				</div>
+				<%= comment.content -%>
+				</li>
+			<% end %>
+		</ol>
+	</div>
+	<%= link_to 'New Comment', :controller => 'comments', :action => 'new', :post => @post %><br />
+	<%= link_to 'Go back', :action => 'index' %>
+</div>

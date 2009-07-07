@@ -1,0 +1,85 @@
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ white-space: normal;
+}
+
+#timestamp p td {
+  font-size: 6pt;
+}
+
+#comments a {
+  font-size: 7pt;
+  color: orange;
+  font-weight: 100;
+}
+
+
+    body {background-color: black; color: #ff6600}
+    A:link {COLOR: orange; 
+        FONT-FAMILY: verdana; 
+        TEXT-DECORATION: none; 
+        FONT-SIZE: 9pt; 
+          font-weight: bold}
+    A:visited {COLOR: gray; 
+             FONT-FAMILY: verdana; 
+           TEXT-DECORATION: none; 
+           FONT-SIZE: 9pt; 
+           font-weight: bold}
+    A:active {COLOR: yellow; 
+            FONT-FAMILY: verdana; 
+          TEXT-DECORATION: none; 
+          FONT-SIZE: 9pt; 
+          font-weight: bold}
+    A:hover {COLOR: yellow; 
+         TEXT-DECORATION: underline;
+         FONT-SIZE: 9pt;}
+    tc {background-color: rgb(255,255,255)}
+    body {line-height: 12pt}
+    td.c4 {BORDER-COLLAPSE: collapse;}
+    div.c3 {LINE-HEIGHT: 116%; VERTICAL-ALIGN: 116%; text-align: left}
+    td.c2 {BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none}
+    div.c1 {text-align: center}
+    .center {text-align: center}
+    img.floatright {float: right;
+      margin: 0 0 10px 10px;
+      border: 1px solid #666;}
+    img{border:none;vertical-align:middle;}

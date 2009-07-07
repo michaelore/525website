@@ -1,0 +1,34 @@
+<ul>
+<% for post in @posts %>
+  <li>
+  <table>
+  <tr>
+    <th><%=h post.title %></th>
+  </tr>
+  <tr>
+    <td id="timestamp"><p>Created at <%= post[:created_at] %></p></td>
+  </tr>
+  <tr>
+    <td align="left"><pre wrap="soft"><%= post.content %></pre>
+    </td>
+  </tr>
+  <tr>
+    <td><% if session[:logged_in] then %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+    <%= link_to 'Comments', post%></td>
+  </tr>
+  </table>
+  </li>
+<% end %>
+</ul>
+
+<br />
+
+<% if session[:logged_in] then %>
+  <%= link_to 'New Post', :action => "new" %><br /><br />
+  <%= link_to 'Logout', :controller => "user", :action => "logout" %>
+<% else %>
+  <%= link_to 'Login', :controller => "user", :action => "login" %>
+<% end %>

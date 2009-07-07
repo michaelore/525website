@@ -1,0 +1,13 @@
+<h1>Login</h1>
+<form action="/user/process_login" method="post">
+  <p>
+    <label for="password">Password</label><br />
+    <input id="password" name="password" size="10" type="text" />
+  </p>
+  <p>
+    <input id="password_submit" name="process_login" type="submit" value="Login" />
+  </p>
+  <input id="authenticity_token" name="authenticity_token" type="hidden" value=<%= form_authenticity_token %> />
+</form>
+
+<%= link_to 'Back', posts_path %>
