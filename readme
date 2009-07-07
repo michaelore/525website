@@ -1,3 +1,5 @@
+IMPORTANT: The password ('swartdizzle')  is currently stored in plaintext in the source code. It must be changed before the site is deployed.
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create 
