@@ -9,12 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090319011936) do
+ActiveRecord::Schema.define(:version => 20090708141959) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "title",      :limit => 60, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "author"
     t.text     "content"
     t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "title",       :limit => 60, :null => false
+    t.string   "image",       :limit => 60, :null => false
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
