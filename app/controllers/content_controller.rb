@@ -9,6 +9,6 @@ class ContentController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-      render :file => params[:path].join("/")
+      render :file => "content/" + params[:path].join("/"), :layout => true
   end
 end
