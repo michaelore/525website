@@ -1,4 +1,4 @@
 class Photo < ActiveRecord::Base
-    validates_prescense_of :title, :image
+    validates_presence_of :title, :image
     belongs_to :category
 end

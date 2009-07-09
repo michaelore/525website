@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
     end
 
     def create
-        @category = Category.new(params[:photo])
+        @category = Category.new(params[:category])
 
         respond_to do |format|
             if @category.save

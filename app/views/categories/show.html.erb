@@ -1,36 +1,18 @@
-<div id="post">
-    <div id="ptitle">
-        <h1><%=h @post.title %></h1>
-    </div>
-    <div id="pdate">
-        <p>Created at <%= @post[:created_at] %></p>
-    </div>
-    <%= @post.content %>
-    <div id="pfooter">
-        <% if session[:logged_in] then %>
-            <%= link_to 'Edit', edit_post_path(@post) %>
-            <%= link_to 'Delete', @post, :confirm => 'Are you sure?', :method => :delete %>
-        <% end %>
-        <%= link_to 'Comments', @post %>
-    </div>
-</div>
-<div id="comments">
-    <ol>
-        <% @comments.each do |comment| %>
-            <li>
-            <div id="cheader">
-                <span id="cauthor">
-                    <%=h comment.author %>
-                </span>
-                <% if session[:logged_in] %>
-                    <%= link_to 'Edit', :controller => 'comments', :action => 'edit', :id => comment.id %>
-                    <%= link_to 'Delete', :confirm => 'Are you sure?', :controller => 'comments', :action => 'destroy', :id => comment.id %>
+<h1><%=h @category.title %></h1>
+
+<div id="photos">
+    <table>
+        <% for x in (0..(@photos.length-1)/4) do %>
+            <tr>
+                <% for y in (0..4) do %>
+                    <td>
+                        <%= display_thumb @photos[x+y] %>
+                    </td>
                 <% end %>
-            </div>
-            <%= comment.content -%>
-            </li>
+            </tr>
         <% end %>
-    </ol>
+    </table>
 </div>
-<%= link_to 'New Comment', :controller => 'comments', :action => 'new', :post => @post %><br />
+            
+<%= link_to 'New Photo', :controller => 'photos', :action => 'new', :category => @category %><br />
 <%= link_to 'Go back', :action => 'index' %>
