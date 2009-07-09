@@ -41,4 +41,6 @@ class PhotosController < ApplicationController
 		format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
 	    end
 	end
+    end
+end
 
