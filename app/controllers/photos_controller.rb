@@ -1,10 +1,6 @@
 class PhotosController < ApplicationController
     def index
-	@categories = Category.find(:all)
-
-	respond_to do |format|
-	    format.html
-	end
+        redirect_to :controller => 'categories'
     end
 
     def show
@@ -22,7 +18,7 @@ class PhotosController < ApplicationController
 
 	respond_to do |format|
 	    format.html
-	    format.xml {render :xml => @photo
+	    format.xml {render :xml => @photo}
 	end
     end
 
