@@ -1,0 +1,13 @@
+<ul>
+<% for category in @categories %>
+    <li>
+    <%= link_to category.title, :controller => 'photos', :action => 'show' %>
+    </li>
+<% end %>
+</ul>
+<br />
+<div id="admin">
+    <% if session[:logged_in] then %>
+        <%= link_to 'New Category', :action => "new" %><br /><br />
+    <% end %>
+</div>

@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
-    validates_prescense_of :title
+    validates_presence_of :title
     has_many :photos
 end

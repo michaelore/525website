@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+    layout 'standard'
     def index
         redirect_to :controller => 'categories'
     end
