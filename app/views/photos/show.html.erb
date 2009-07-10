@@ -1,0 +1,6 @@
+<h1><%= @photo.title %></h1>
+<%= image_tag @photo.image %>
+<%= @photo.description %>
+
+<%= link_to 'Edit', edit_comment_path(@photo) %> |
+<%= link_to 'Back', :controller => 'category', :action => 'show', :id => @photo.category_id %>
