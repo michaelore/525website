@@ -3,4 +3,4 @@
 <%= @photo.description %>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', :controller => 'category', :action => 'show', :id => @photo.category_id %>
+<%= link_to 'Back', :controller => 'categories', :action => @photo.category_id %>
