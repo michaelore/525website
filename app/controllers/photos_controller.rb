@@ -42,5 +42,30 @@ class PhotosController < ApplicationController
 	    end
 	end
     end
+
+    def update
+        @photo = Photo.find(params[:id])
+
+        respond_to do |format|
+            if @photo.update_attributes(params[:comment])
+                flash[:notice] = 'Photo was successfully updated.'
+                format.html { redirect_to @photo }
+                format.xml { head :ok }
+            else
+                format.html { render :action => "edit" }
+                format.xml { render :xml => @photo.errors, :status => :unprocessable_entity }
+            end
+        end
+    end
+
+    def destroy
+        @photo = Photo.find(params[:id])
+        @photo.destroy
+
+        respond_to do |format|
+            format.html { redirect_to(photos_url) }
+            format.xml { head :ok }
+        end
+    end
 end
 
