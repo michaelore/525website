@@ -47,4 +47,29 @@ class CategoriesController < ApplicationController
             end
         end
     end
+
+    def update
+        @category = Category.find(params[:id])
+
+        respond_to do |format|
+            if @category.update_attributes(params[:post])
+                flash[:notice] = 'Post was successfully updated.'
+                format.html { redirect_to(@category) }
+                format.xml  { head :ok }
+            else
+                format.html { render :action => "edit" }
+                format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
+            end
+        end
+    end
+
+    def destroy
+        @category = Category.find(params[:id])
+        @category.destroy
+
+        respond_to do |format|
+            format.html { redirect_to(posts_url) }
+            format.xml  { head :ok }
+        end
+    end
 end
