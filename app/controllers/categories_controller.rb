@@ -21,11 +21,6 @@ class CategoriesController < ApplicationController
     def new
         redirect_to :action => "index" unless session[:logged_in]
         @category = Category.new
-
-        respond_to do |format|
-            format.html
-            format.xml {render :xml => @category}
-        end
     end
 
     def edit

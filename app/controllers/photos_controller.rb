@@ -16,11 +16,6 @@ class PhotosController < ApplicationController
     def new
 	redirect_to :action => "index" unless session[:logged_in]
 	@photo = Photo.new
-
-	respond_to do |format|
-	    format.html
-	    format.xml {render :xml => @photo}
-	end
     end
 
     def edit
@@ -32,7 +27,7 @@ class PhotosController < ApplicationController
 	@photo = Photo.new(params[:photo])
 
 	respond_to do |format|
-	    if @photo.save
+	    if @photo.save(params[:image])
 		flash[:notice] = 'Photo was successfully created.'
 		format.html { redirect_to(@photo) }
 		format.xml  { render :xml => @photo, :status => :created, :location => @photo }
