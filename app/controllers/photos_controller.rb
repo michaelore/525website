@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
 	@photo = Photo.new(params[:photo])
 
 	respond_to do |format|
-	    if @photo.save(params[:image])
+	    if @photo.save(params[:photo])
 		flash[:notice] = 'Photo was successfully created.'
 		format.html { redirect_to(@photo) }
 		format.xml  { render :xml => @photo, :status => :created, :location => @photo }
