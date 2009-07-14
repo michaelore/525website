@@ -6,7 +6,7 @@
             <tr>
                 <% for y in (0..4) do %>
                     <td>
-                        <%= display_thumb @photos[x+y] if @photos[x+y] %>
+                        <%= display_thumb @photos[4*x+y] if @photos[4*x+y] %>
                     </td>
                 <% end %>
             </tr>
