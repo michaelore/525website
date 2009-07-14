@@ -39,8 +39,6 @@ class PhotosController < ApplicationController
     end
 
     def update
-        @photo = Photo.find(params[:id])
-
         respond_to do |format|
             if @photo.update_attributes(params[:comment])
                 flash[:notice] = 'Photo was successfully updated.'
