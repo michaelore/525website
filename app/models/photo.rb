@@ -8,10 +8,10 @@ class Photo < ActiveRecord::Base
         name = photo['image'].original_filename
         directory = 'public/images'
         path = File.join(directory, name)
-        File.open(path, "wb") { |f| f.write(photo['image'].read) }
+        File.open(path, "wb") { |f| f.write(photo['image'].read) } unless File.exists?(path)
         thumb = Image.read(path).first.thumbnail(70, 70)
         thumb_path = File.join(directory, ("thumb_" + name))
-        thumb.write(thumb_path)
+        thumb.write(thumb_path) unless File.exists?(thumb_path)
         photo['image'] = name
         new_photo = Photo.new(photo)
         new_photo.old_save
