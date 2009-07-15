@@ -1,6 +1,7 @@
 class Photo < ActiveRecord::Base
     include Magick
     validates_presence_of :title, :image, :category_id
+    validates_uniqueness_of :image
     belongs_to :category
     alias old_save save
     def save(photo)
