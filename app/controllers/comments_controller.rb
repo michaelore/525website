@@ -14,6 +14,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+  end
+
   # GET /comments/1/edit
   def edit
     redirect_to :controller => "posts", :action => "index" unless session[:logged_in]
