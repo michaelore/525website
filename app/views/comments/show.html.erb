@@ -6,7 +6,7 @@
         </span>
         <% if session[:logged_in] %>
             <%= link_to 'Edit', :controller => 'comments', :action => 'edit', :id => @comment.id %>
-            <%= link_to 'Delete', :confirm => 'Are you sure?', :controller => 'comments', :action => 'destroy', :id => @comment.id %>
+            <%= link_to 'Delete', @comment, :confirm => 'Are you sure?', :method => 'delete' %>
         <% end %>
     </div>
     <%= @comment.content -%>
