@@ -22,6 +22,7 @@
                 <span id="cauthor">
                     <%=h comment.author %>
                 </span>
+                <%= link_to 'Link', :controller => 'comments', :action => 'show', :id => comment.id %>
                 <% if session[:logged_in] %>
                     <%= link_to 'Edit', :controller => 'comments', :action => 'edit', :id => comment.id %>
                     <%= link_to 'Delete', :confirm => 'Are you sure?', :controller => 'comments', :action => 'destroy', :id => comment.id %>
