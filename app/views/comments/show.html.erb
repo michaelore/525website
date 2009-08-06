@@ -1,18 +1,15 @@
-<p>
-  <b>Author:</b>
-  <%=h @comment.author %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%=h @comment.content %>
-</p>
-
-<p>
-  <b>Post:</b>
-  <%=h @comment.post_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<ol>
+    <li>
+    <div id="cheader">
+        <span id="cauthor">
+            <%=h @comment.author %>
+        </span>
+        <% if session[:logged_in] %>
+            <%= link_to 'Edit', :controller => 'comments', :action => 'edit', :id => @comment.id %>
+            <%= link_to 'Delete', :confirm => 'Are you sure?', :controller => 'comments', :action => 'destroy', :id => @comment.id %>
+        <% end %>
+    </div>
+    <%= @comment.content -%>
+    </li>
+</ol>
+<%= link_to 'Back', :controller => 'posts', :action => 'show', :id => @comment.post_id %>
