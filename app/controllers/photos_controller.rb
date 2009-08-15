@@ -25,9 +25,11 @@ class PhotosController < ApplicationController
 
     def create
 	@photo = Photo.new(params[:photo])
+        @photo.image = @photo.image.original_filename
 
 	respond_to do |format|
-	    if @photo.save(params[:photo])
+	    if @photo.save
+                Photo.add_files_for(params[:photo])
 		flash[:notice] = 'Photo was successfully created.'
 		format.html { redirect_to(@photo) }
 		format.xml  { render :xml => @photo, :status => :created, :location => @photo }
@@ -39,8 +41,10 @@ class PhotosController < ApplicationController
     end
 
     def update
+        @photo = Photo.find(params[:id])
+
         respond_to do |format|
-            if @photo.update_attributes(params[:comment])
+            if @photo.update_attributes(params[:photo])
                 flash[:notice] = 'Photo was successfully updated.'
                 format.html { redirect_to @photo }
                 format.xml { head :ok }
