@@ -14,5 +14,9 @@
     </table>
 </div>
             
-<%= link_to 'New Photo', :controller => 'photos', :action => 'new', :category => @category %><br />
+<% if session[:logged_in] then %>
+    <%= link_to 'New Photo', :controller => 'photos', :action => 'new', :category => @category %> |
+    <%= link_to 'Edit Category', edit_category_path(@category) %> |
+    <%= link_to 'Delete Category', @category, :confirm => 'Are you sure?', :method => 'delete' %><br />
+<% end %>
 <%= link_to 'Go back', :action => 'index' %>
