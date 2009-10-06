@@ -25,11 +25,11 @@ class PhotosController < ApplicationController
 
     def create
 	@photo = Photo.new(params[:photo])
-        @photo.image = @photo.image.original_filename
 
 	respond_to do |format|
 	    if @photo.save
-                Photo.add_files_for(params[:photo])
+                @photo.add_files_for
+                @photo.image = @photo.image.original_filename
 		flash[:notice] = 'Photo was successfully created.'
 		format.html { redirect_to(@photo) }
 		format.xml  { render :xml => @photo, :status => :created, :location => @photo }
@@ -57,7 +57,7 @@ class PhotosController < ApplicationController
 
     def destroy
         @photo = Photo.find(params[:id])
-        @photo.destroy
+        @photo.destroy.remove_files_for
 
         respond_to do |format|
             format.html { redirect_to(photos_url) }

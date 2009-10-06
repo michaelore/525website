@@ -33,6 +33,7 @@ class CategoriesController < ApplicationController
 
         respond_to do |format|
             if @category.save
+                @category.add_folder_for
                 flash[:notice] = 'Photo was successfully created.'
                 format.html { redirect_to(@category) }
                 format.xml  { render :xml => @category, :status => :created, :location => @category }
@@ -60,7 +61,7 @@ class CategoriesController < ApplicationController
 
     def destroy
         @category = Category.find(params[:id])
-        @category.destroy
+        @category.destroy.remove_folder_for
 
         respond_to do |format|
             format.html { redirect_to(posts_url) }
