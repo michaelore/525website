@@ -25,16 +25,17 @@ class PhotosController < ApplicationController
 
     def create
 	@photo = Photo.new(params[:photo])
+	file = @photo.image
+	@photo.image = file.original_filename
 
 	respond_to do |format|
 	    if @photo.save
-                @photo.add_files_for
-                @photo.image = @photo.image.original_filename
+		Photo.add_files_for(file, Category.find(@photo.category_id).title)
 		flash[:notice] = 'Photo was successfully created.'
 		format.html { redirect_to(@photo) }
 		format.xml  { render :xml => @photo, :status => :created, :location => @photo }
 	    else
-		format.html { render :action => "new" }
+		format.html { render :action => "new", :category => @photo.category_id  }
 		format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
 	    end
 	end

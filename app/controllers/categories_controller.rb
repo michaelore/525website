@@ -61,7 +61,8 @@ class CategoriesController < ApplicationController
 
     def destroy
         @category = Category.find(params[:id])
-        @category.destroy.remove_folder_for
+        @category.remove_folder_for
+        @category.destroy
 
         respond_to do |format|
             format.html { redirect_to(posts_url) }

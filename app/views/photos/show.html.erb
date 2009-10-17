@@ -1,5 +1,5 @@
 <h1><%= @photo.title %></h1>
-<%= @photo.display %><br />
+<%= display(@photo) %><br />
 <%= @photo.description %>
 
 <% if session[:logged_in] then %>
