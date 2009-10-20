@@ -58,7 +58,8 @@ class PhotosController < ApplicationController
 
     def destroy
         @photo = Photo.find(params[:id])
-        @photo.destroy.remove_files_for
+        Photo.remove_files_for(@photo.image, Category.find(@photo.category_id).title)
+        @photo.delete
 
         respond_to do |format|
             format.html { redirect_to(photos_url) }
