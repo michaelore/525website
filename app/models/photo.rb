@@ -19,4 +19,29 @@ class Photo < ActiveRecord::Base
         thumb_path = File.join(directory, 'thumb', name)
         File.delete(thumb_path)
     end
+    def update_attributes_and_files(new_photo)
+        # new_photo[:category_id] is actually the title of the category.
+        if new_photo[:category_id] then
+          new_category = Category.find(:first,
+                                       :conditions => ['title = ?', new_photo[:category_id]])
+          old_category = Category.find(self.category_id)
+
+          if not new_category then
+            return false
+          end
+          
+          old_path = File.join('public', 'images', old_category.title, self.image)
+          new_path = File.join('public', 'images', new_category.title, self.image)
+          
+          File.rename(old_path, new_path)
+          
+          old_thumb_path = File.join('public', 'images', old_category.title, 'thumb', self.image)
+          new_thumb_path = File.join('public', 'images', new_category.title, 'thumb', self.image)
+
+          File.rename(old_thumb_path, new_thumb_path)
+          
+          new_photo[:category_id] = new_category.id
+        end
+        self.update_attributes(new_photo)
+    end
 end

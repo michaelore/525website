@@ -9,7 +9,7 @@
   </p>
   <p>
     <%= f.label :category_id %><br />
-    <%= f.text_field :category_id %>
+    <%= f.text_field :category_id, :value => Category.find(@photo.category_id).title %>
   </p>
   <p>
     <%= f.submit "Update" %>

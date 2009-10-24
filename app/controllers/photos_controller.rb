@@ -45,7 +45,7 @@ class PhotosController < ApplicationController
         @photo = Photo.find(params[:id])
 
         respond_to do |format|
-            if @photo.update_attributes(params[:photo])
+            if @photo.update_attributes_and_files(params[:photo])
                 flash[:notice] = 'Photo was successfully updated.'
                 format.html { redirect_to @photo }
                 format.xml { head :ok }
