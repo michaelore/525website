@@ -8,6 +8,7 @@
 <br />
 <div id="admin">
     <% if session[:logged_in] then %>
-        <%= link_to 'New Category', :action => "new" %><br /><br />
+        <%= link_to 'New Category', :action => "new" %><br />
+	<%= link_to 'Upload Batch of Photos', :controller => "zips", :action => "new" %><br /><br />
     <% end %>
 </div>

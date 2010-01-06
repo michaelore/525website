@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :comments
   map.resources :categories
   map.resources :photos
+  map.resources :zips
 
   # The priority is based upon order of creation: first created -> highest priority.
 

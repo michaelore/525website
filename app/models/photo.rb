@@ -3,8 +3,7 @@ class Photo < ActiveRecord::Base
     validates_presence_of :title, :image, :category_id
     validates_uniqueness_of :image
     belongs_to :category
-    def Photo.add_files_for(file, category)
-	name = file.original_filename
+    def Photo.add_files_for(name, category)
         directory = File.join('public', 'images', category)
         path = File.join(directory, name)
         File.open(path, "wb") { |f| f.write(file.read) } unless File.exists?(path)

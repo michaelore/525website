@@ -1,0 +1,17 @@
+<h1>Batch Photo Upload</h1>
+
+<%= flash[:notice] %>
+<%= flash[:warning] %>
+<%= flash[:error] %>
+
+<% form_for(:zip, :url => {:action => 'create'}, :html => {:multipart => true}) do |f| %>
+  <p>
+    <%= f.file_field :zip %>
+  </p>
+ 
+  <p>
+    <%= f.submit "Upload" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', :controller => 'categories', :action => 'index' %>
