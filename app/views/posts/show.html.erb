@@ -11,9 +11,10 @@
             <%= link_to 'Edit', edit_post_path(@post) %>
             <%= link_to 'Delete', @post, :confirm => 'Are you sure?', :method => :delete %>
         <% end %>
-        <%= link_to 'Comments', @post %>
+        <!-- <%= link_to 'Comments', @post %> -->
     </div>
 </div>
+<!--
 <div id="comments">
     <ol>
         <% @comments.each do |comment| %>
@@ -33,5 +34,7 @@
         <% end %>
     </ol>
 </div>
+
 <%= link_to 'New Comment', :controller => 'comments', :action => 'new', :post => @post %><br />
+-->
 <%= link_to 'Go back', :action => 'index' %>
