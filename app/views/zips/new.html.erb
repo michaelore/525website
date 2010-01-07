@@ -5,6 +5,17 @@
 <%= flash[:error] %>
 
 <% form_for(:zip, :url => {:action => 'create'}, :html => {:multipart => true}) do |f| %>
+  <ol>
+      <li>Create a folder for each category you'd like to upload into.</li>
+      <li>Put all of the photos you'll be uploading into their respective categories.</li>
+      <li>Put all of the folders in a zip archive.</li>
+      <li>Select the zip file you created in the field below.</li>
+      <li>Click "Upload".</li>
+  </ol>
+  <p>
+  WARNING: This feature is currently rather fragile, and it might blow up in your face if you do something it doesn't expect.
+  In particular, don't give it a zip file that contains folders within folders or files that aren't in any folders.
+  </p>
   <p>
     <%= f.file_field :zip %>
   </p>
