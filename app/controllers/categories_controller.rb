@@ -61,6 +61,7 @@ class CategoriesController < ApplicationController
 
     def destroy
         @category = Category.find(params[:id])
+	Photo.find(:all, :conditions => {:category_id => params[:id]}).each {|x| x.destroy}
         @category.remove_folder_for
         @category.destroy
 
