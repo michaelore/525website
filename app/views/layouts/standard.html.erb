@@ -12,7 +12,8 @@
         <div id="banner"><%= image_tag 'Swart_dogs_clock.jpg', :alt => 'Swartdogs'%></div>
         <div id="nav">
             <ul>
-                <li><%= link_to 'Home', :controller => 'posts', :action => 'index' %></li>
+                <li><%= link_to 'Home', '/' %></li>
+		<li><%= link_to 'News/Blog', :controller => 'posts', :action => 'index' %></li>
                 <li><%= link_to 'Calendar', :controller => 'content', :action => 'calendar' %></li>
                 <li><%= link_to 'Photos', :controller => 'categories', :action => 'index' %></li>
                 <li><%= link_to 'Committees', :controller => 'content', :action => 'committees' %></li>
