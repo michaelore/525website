@@ -46,9 +46,11 @@ class CategoriesController < ApplicationController
 
     def update
         @category = Category.find(params[:id])
+	old_folder = @category.title
 
         respond_to do |format|
             if @category.update_attributes(params[:category])
+		@category.update_folder_from(old_folder)
                 flash[:notice] = 'Post was successfully updated.'
                 format.html { redirect_to(@category) }
                 format.xml  { head :ok }

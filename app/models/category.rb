@@ -9,4 +9,7 @@ class Category < ActiveRecord::Base
     def remove_folder_for
         FileUtils.rm_rf(File.join('public', 'images', self.title))
     end
+    def update_folder_from(old)
+	FileUtils.mv(File.join('public', 'images', old), File.join('public', 'images', self.title))
+    end
 end
