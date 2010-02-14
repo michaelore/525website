@@ -26,7 +26,9 @@ class PhotosController < ApplicationController
     def create
 	@photo = Photo.new(params[:photo])
 	file = @photo.image
-	@photo.image = file.original_filename
+	if file.respond_to? :original_filename
+	    @photo.image = file.original_filename
+	end
 
 	respond_to do |format|
 	    if @photo.save
