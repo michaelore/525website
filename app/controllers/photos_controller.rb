@@ -30,10 +30,11 @@ class PhotosController < ApplicationController
 
 	respond_to do |format|
 	    if @photo.save
+	    	category = Category.find(@photo.category_id).title
 		directory = File.join('public', 'images', category)
-		path = File.join(directory, name)
+		path = File.join(directory, file.original_filename)
 		File.open(path, "wb") { |f| f.write(file.read) } unless File.exists?(path)
-		Photo.add_files_for(file, Category.find(@photo.category_id).title)
+		Photo.add_files_for(file.original_filename, category)
 		flash[:notice] = 'Photo was successfully created.'
 		format.html { redirect_to(@photo) }
 		format.xml  { render :xml => @photo, :status => :created, :location => @photo }
