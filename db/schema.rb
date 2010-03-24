@@ -9,7 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090709233537) do
+ActiveRecord::Schema.define(:version => 20100324212336) do
+
+  create_table "auctions", :force => true do |t|
+    t.string   "title",       :limit => 60, :null => false
+    t.string   "photo",       :limit => 60, :null => false
+    t.text     "description"
+    t.integer  "initial_bid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bids", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "title",      :limit => 60, :null => false

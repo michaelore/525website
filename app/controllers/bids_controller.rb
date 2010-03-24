@@ -41,6 +41,7 @@ class BidsController < ApplicationController
   # POST /bids.xml
   def create
     @bid = Bid.new(params[:bid])
+    @last_bid = @bid.auction.bids[-1]
 
     respond_to do |format|
       if @bid.save
@@ -61,7 +62,7 @@ class BidsController < ApplicationController
 
     respond_to do |format|
       if @bid.update_attributes(params[:bid])
-        flash[:notice] = 'Bid was successfully updated.'
+        flash[:notice] = 'Your bid has been submitted.'
         format.html { redirect_to(@bid) }
         format.xml  { head :ok }
       else
