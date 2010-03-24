@@ -1,0 +1,15 @@
+<h1><%=h @auction.title %></h1>
+
+<%= image_tag @auction.photo %><br />
+
+<p><%= @auction.description %></p>
+
+<h2>Last bid: <%= @bids[0].amount %></h2>
+
+<%= link_to 'Make a Bid', :controller => 'bids', :action => 'new', :auction => @auction %> |
+
+<% if session[:logged_in] then %>
+    <%= link_to 'Edit Auction', edit_auction_path(@auction) %> |
+    <%= link_to 'Destroy Auction', @auction, :confirm => 'Are you sure?', :method => 'destroy' %><br />
+<% end %>
+<%= link_to 'Go back', :action => 'index' %>

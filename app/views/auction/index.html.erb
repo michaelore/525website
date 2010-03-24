@@ -1,0 +1,13 @@
+<ul>
+<% for auction in @auction %>
+    <li>
+    <%= link_to auction.title, auction %>
+    </li>
+<% end %>
+</ul>
+<br />
+<div id="admin">
+    <% if session[:logged_in] then %>
+        <%= link_to 'New Auction', :action => "new" %><br />
+    <% end %>
+</div>
