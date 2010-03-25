@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(:version => 20100324212336) do
   end
 
   create_table "bids", :force => true do |t|
+    t.string   "name",       :limit => 60,  :null => false
+    t.string   "contact",    :limit => 100, :null => false
+    t.integer  "amount"
+    t.integer  "auction_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,3 +1,8 @@
+<ul>
+    <li>Name: <%= @bid.name %></li>
+    <li>Contact info: <%= @bid.contact %></li>
+    <li>Amount: $<%= @bid.amount %></li>
+</ul>
 
 <%= link_to 'Edit', edit_bid_path(@bid) %> |
 <%= link_to 'Back', bids_path %>

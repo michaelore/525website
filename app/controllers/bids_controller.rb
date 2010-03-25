@@ -1,4 +1,5 @@
 class BidsController < ApplicationController
+  layout 'standard'
   # GET /bids
   # GET /bids.xml
   def index
@@ -46,7 +47,7 @@ class BidsController < ApplicationController
     respond_to do |format|
       if @bid.save
         flash[:notice] = 'Bid was successfully created.'
-        format.html { redirect_to(@bid) }
+        format.html { redirect_to(@bid.auction) }
         format.xml  { render :xml => @bid, :status => :created, :location => @bid }
       else
         format.html { render :action => "new" }

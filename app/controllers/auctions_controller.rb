@@ -1,4 +1,4 @@
-class AuctionController < ApplicationController
+class AuctionsController < ApplicationController
     layout 'standard'
     def index
 	@auction = Auction.find(:all)

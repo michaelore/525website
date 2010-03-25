@@ -4,7 +4,7 @@
 
 <p><%= @auction.description %></p>
 
-<h2>Last bid: <%= @bids[0].amount %></h2>
+<h2>Last bid: $<%= if @bids[-1] then @bids[-1].amount else @auction.initial_bid end %></h2>
 
 <%= link_to 'Make a Bid', :controller => 'bids', :action => 'new', :auction => @auction %> |
 

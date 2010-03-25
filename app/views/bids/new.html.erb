@@ -4,6 +4,19 @@
   <%= f.error_messages %>
 
   <p>
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :contact %> info<br />
+    <%= f.text_field :contact %>
+  </p>
+    <input type="hidden" name="bid[auction_id]" value=<%= params[:auction] %> />
+  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
