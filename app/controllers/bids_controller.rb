@@ -3,17 +3,21 @@ class BidsController < ApplicationController
   # GET /bids
   # GET /bids.xml
   def index
-    @bids = Bid.find(:all)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @bids }
+    if session[:logged_in]
+      @bids = Bid.find(:all)
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @bids }
+      end
+    else
+      redirect_to "/"
     end
   end
 
   # GET /bids/1
   # GET /bids/1.xml
   def show
+    redirect_to "/" unless session[:logged_in]
     @bid = Bid.find(params[:id])
 
     respond_to do |format|
@@ -35,6 +39,7 @@ class BidsController < ApplicationController
 
   # GET /bids/1/edit
   def edit
+    redirect_to :action => "index" unless session[:logged_in]
     @bid = Bid.find(params[:id])
   end
 
@@ -76,6 +81,7 @@ class BidsController < ApplicationController
   # DELETE /bids/1
   # DELETE /bids/1.xml
   def destroy
+    redirect_to :action => "index" unless session[:logged_in]
     @bid = Bid.find(params[:id])
     @bid.destroy
 

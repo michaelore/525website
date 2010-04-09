@@ -34,13 +34,13 @@ class PostsController < ApplicationController
                 format.xml  { render :xml => @post }
             end
         else
-            redirect_to :action => "index"
+            redirect_to "/"
         end
     end
 
     # GET /posts/1/edit
     def edit
-        redirect_to :action => "index" unless session[:logged_in]
+        redirect_to "/" unless session[:logged_in]
         @post = Post.find(params[:id])
     end
 
