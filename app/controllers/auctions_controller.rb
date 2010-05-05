@@ -11,6 +11,7 @@ class AuctionsController < ApplicationController
     def show
         @auction = Auction.find(params[:id])
 	@bids = @auction.bids
+	@bid = Bid.new
 
         respond_to do |format|
             format.html
