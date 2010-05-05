@@ -4,6 +4,26 @@
   <%= f.error_messages %>
 
   <p>
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :phone %> number<br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :auction_id %><br />
+    <%= f.text_field :auction_id %>
+  </p>
+  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>

@@ -12,8 +12,12 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :contact %> info<br />
-    <%= f.text_field :contact %>
+    <%= f.label :phone %> number<br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
   </p>
     <input type="hidden" name="bid[auction_id]" value=<%= params[:auction] %> />
   <p>

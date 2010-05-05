@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100324212336) do
+ActiveRecord::Schema.define(:version => 20100410080216) do
 
   create_table "auctions", :force => true do |t|
     t.string   "title",       :limit => 60, :null => false
@@ -21,12 +21,13 @@ ActiveRecord::Schema.define(:version => 20100324212336) do
   end
 
   create_table "bids", :force => true do |t|
-    t.string   "name",       :limit => 60,  :null => false
-    t.string   "contact",    :limit => 100, :null => false
+    t.string   "name",       :limit => 60,                  :null => false
     t.integer  "amount"
     t.integer  "auction_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phone",      :limit => 200, :default => "", :null => false
+    t.string   "address",    :limit => 200, :default => "", :null => false
   end
 
   create_table "categories", :force => true do |t|

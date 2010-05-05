@@ -40,6 +40,7 @@ class BidsController < ApplicationController
   # GET /bids/1/edit
   def edit
     redirect_to :action => "index" unless session[:logged_in]
+    @admin = true
     @bid = Bid.find(params[:id])
   end
 
@@ -65,6 +66,7 @@ class BidsController < ApplicationController
   # PUT /bids/1.xml
   def update
     @bid = Bid.find(params[:id])
+    @last_bid = @bid.auction.bids[-1]
 
     respond_to do |format|
       if @bid.update_attributes(params[:bid])

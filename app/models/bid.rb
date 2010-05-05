@@ -1,5 +1,5 @@
 class Bid < ActiveRecord::Base
-    validates_presence_of :amount, :name, :contact, :auction_id
+    validates_presence_of :amount, :name, :phone, :address, :auction_id
     validate :must_be_in_range
     def must_be_in_range
 	last_bid = if @auction.bids[-1] then @auction.bids[-1].amount else @auction.initial_bid end
